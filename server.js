@@ -29,7 +29,7 @@ function serverResponse(req,res){
                 res.end(data)
                 });
                 break;
-        case 'css-frameworks.html':
+        case '/css-frameworks.html':
             fs.readFile("css-frameworks.html",function(err,data){
                 res.end(data)
                 });
