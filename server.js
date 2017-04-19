@@ -19,9 +19,21 @@ function serverResponse(req,res){
                 res.end(data)
             });
             break;
-        case '/portfolio.html':
-            res.end('<h1>Portfolio</h1><p>This is my portfolio.</p><p><a href="/home">Return to Home Page</a></p>');
+        case '/foods.html':
+            fs.readFile("foods.html",function(err,data){
+                res.end(data)
+                });
             break;
+        case '/movies.html':
+            fs.readFile("movies.html",function(err,data){
+                res.end(data)
+                });
+                break;
+        case 'css-frameworks.html':
+            fs.readFile("css-frameworks.html",function(err,data){
+                res.end(data)
+                });
+                break;
         default: 
             // 404 content
             res.end('<h1>404</h1><h2>Content not found.</h2><p><a href="/home">Return to Home Page</a></p>');
