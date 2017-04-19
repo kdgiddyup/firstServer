@@ -16,6 +16,8 @@ function serverResponse(req,res){
         case '/index.html':
         case '/home':
             fs.readFile("index.html",function(err,data){
+                // response header: status, {other parameters}
+                res.writeHead(200,{'Content-Type': 'text/html'})
                 res.end(data)
             });
             break;
@@ -34,8 +36,17 @@ function serverResponse(req,res){
                 res.end(data)
                 });
                 break;
+        case '/styles/style.css':
+            fs.readFile("/styles/style.css",function(err,data){
+                // need to state this is a stylesheet
+                res.writeHead(200,{'Content-Type': 'text/css'});
+                res.end(data)
+                });
+                break;
+
         default: 
             // 404 content
+            res.writeHead(404);
             res.end('<h1>404</h1><h2>Content not found.</h2><p><a href="/home">Return to Home Page</a></p>');
             break;
     }
